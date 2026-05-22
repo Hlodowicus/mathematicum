@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Verificator statique</title>
+    <meta name="description" content="Version statique de Verificator pour GitHub Pages">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js"></script>
+    <script defer src="app.js"></script>
+</head>
+<body>
+    <section class="password-screen" id="password-screen" aria-labelledby="password-title">
+        <form class="password-card" id="password-form">
+            <h1 id="password-title">Acces protege</h1>
+            <p>Entre le mot de passe pour acceder au site.</p>
+            <label>
+                Mot de passe
+                <input id="password-input" type="password" autocomplete="current-password" required autofocus>
+            </label>
+            <button type="submit">Entrer</button>
+            <p class="password-error" id="password-error" role="alert"></p>
+        </form>
+    </section>
+
+    <header class="site-header">
+        <nav class="nav">
+            <a class="brand" href="./">Verificator</a>
+            <div class="nav-links">
+                <a href="./">Version statique</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-title">
+            <h1>Verificator</h1>
+            <p>Utilise x comme variable. Exemples acceptes : x**3, x^3, exp(x), sin(x), ln(x), sqrt(x), oo, -oo.</p>
+        </section>
+
+        <div class="messages" id="messages">
+            <p id="engine-status">Chargement du moteur de calcul...</p>
+        </div>
+
+        <div class="grands-onglets" role="tablist">
+            <button class="grand-tab-button active" type="button" data-grand="verification">Verifier</button>
+            <button class="grand-tab-button" type="button" data-grand="exercices">Exercices</button>
+        </div>
+
+        <section class="grand-section active" id="grand-verification">
+            <div class="tabs" id="verification-tabs" role="tablist"></div>
+            <div id="verification-panels"></div>
+        </section>
+
+        <section class="grand-section" id="grand-exercices">
+            <div class="tabs" id="exercise-tabs" role="tablist"></div>
+            <div id="exercise-panels"></div>
+        </section>
+    </main>
+</body>
+</html>
